@@ -171,8 +171,9 @@ function relay(mailOptions, transportOptions, callback) {
   topts = Object.assign({}, topts);
   cb = _.isFunction(cb) ? cb : _.noop;
 
-  let overrideMx = (domain, mx) => {
-    return topts[domain] && topts[domain]['mx']? [ {exchange: topts[domain]['mx'], priority: 10} ]: mx;
+  const overrideMx = (domain, mx) => {
+    return topts[domain] && topts[domain]['mx'] ?
+      [ {exchange: topts[domain]['mx'], priority: 10} ] : mx;
   };
   return new Promise((resolve, reject) => {
     try {
