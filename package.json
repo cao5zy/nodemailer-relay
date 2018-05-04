@@ -10,7 +10,8 @@
     "lint": "eslint src",
     "test": "babel-node ./node_modules/.bin/_mocha $npm_package_options_mocha",
     "build": "npm run lint && babel src --optional runtime --ignore __tests__ --out-dir dist/ && cp package.json dist/ && cp README.md dist/",
-    "test:send": "babel-node src/__tests__/scratch.js"
+      "test:send": "babel-node src/__tests__/scratch.js",
+      "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
