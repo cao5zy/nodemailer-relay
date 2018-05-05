@@ -11,7 +11,7 @@
     "test": "babel-node ./node_modules/.bin/_mocha $npm_package_options_mocha",
     "build": "npm run lint && babel src --optional runtime --ignore __tests__ --out-dir dist/ && cp package.json dist/ && cp README.md dist/",
       "test:send": "babel-node src/__tests__/scratch.js",
-      "prepare": "npm run build"
+      "prepare": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
