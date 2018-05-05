@@ -1,6 +1,6 @@
 {
   "name": "nodemailer-relay",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Relay SMTP using nodemailer",
   "main": "index.js",
   "options": {
