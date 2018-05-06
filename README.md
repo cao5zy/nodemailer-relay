@@ -13,16 +13,17 @@ which means it needs to be installed along with `nodemailer-relay`
 
 ### Installation
 
+We have to use this module from git directly because this is a fork.
 ```bash
-npm install --save nodemailer nodemailer-relay
+npm install --save git+https://github.com/cao5zy/nodemailer-relay.git#v1.0.3
 ```
 
 ### Example
 
 ```js
-import nodemailer from 'nodemailer-relay';
+var nodemailer = require('nodemailer-relay');
 
-nodemailer.relay({
+nodemailer.default.relay({
   from: 'foo@bar.com',
   to: 'baz@qux.com',
   cc: 'baz@bar.com',
@@ -31,11 +32,7 @@ nodemailer.relay({
 }, {
   'qux.com': {
     port: 587,
-    secure: false,
-    auth: {
-      user: 'username',
-      password: 'password'
-    }
+    mx: 'smtp3.que.com'
   }
 })
 .then(info => {
@@ -50,7 +47,8 @@ nodemailer.relay({
 **Parameters**
 
 * `mailOptions` - Required, [nodemailer message options](https://nodemailer.com/message/)
-* `transportOptions` - Optional, A map of domain name to [nodemailer transport options](https://nodemailer.com/smtp/) for that domain
+* `transportOptions` - Optional, A map of domain name to [nodemailer transport options](https://nodemailer.com/smtp/) for that domain.  
+`mx` is added to allow the user setting the custom mx. Oringinally, the mx is resoved based on the domain by the dns module.
 * `callback` - Optional, An error first callback function that can be used instead of the returned Promise. The second argument is an array of info
 
 **Returns**
